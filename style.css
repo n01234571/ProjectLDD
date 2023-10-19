@@ -1,0 +1,136 @@
+/* diamond code */
+
+/* body style */
+body {
+    background-color: rgb(235, 235, 235);
+    font-family: Arial, sans-serif;
+}
+
+.forecast{
+    margin: 105px;
+    margin-top: 130px;
+}
+
+.content {
+  position: relative;
+  z-index: 1000; 
+}
+
+/* body font */
+body {
+  font-family: Arial, sans-serif;
+  text-align: center;
+}
+/*  this is the box of what the weather forcast is in */
+.weather-container {
+  margin: 100px;
+  margin-top: 130px;
+  padding: 20px;
+  background-color: #f0f0f0;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+/* this */
+.weather-icon {
+  font-size: 64px;
+}
+
+.temperature {
+  font-size: 36px;
+}
+
+.location {
+  font-size: 24px;
+}
+
+/* dustins code */
+.head{
+    position: fixed;
+    background-color: rgb(3, 3, 3);
+    height: 50px; 
+    width: 100%; 
+    position: fixed; 
+    top: 0; 
+    left: 0;
+    z-index: 999;   
+}
+
+/* leor code */
+
+html {
+  height: 100%;
+  width: 100%;
+}
+
+.navbar {
+  background-color: #e36a6a;
+  /* Background color */
+  overflow: hidden;
+  /* Clear floats */
+    align-items: center;
+    display: flex;
+  }
+  
+  /* Style for the navigation links */
+  .navbar a {
+    float: left;
+    display: block;
+    color: white;
+    /* Text color */
+    text-align: right;
+    padding: 14px 16px;
+    margin-left: 50px;
+    text-decoration: none;
+    width: 10%
+
+  }
+  
+  /* Style for the logo and title */
+  .navbar .logo {
+    float: left;
+    margin-right: 30px;
+  }
+  
+.navcitybar {
+    font-size: 16px;
+        /* margin: 27px; */
+    /* padding: -50px; */
+    margin-top: 50px;
+}
+
+  /* Style for the title */
+  .navbar .title {
+    float: left;
+    margin-left: 10px;
+    /* Add some space between the logo and title */
+    font-weight: bold;
+    /* Make the title bold */
+  }
+  
+  .logo img {
+    border-radius: 50%;
+    height: 80px;
+    width: 80px;
+    padding: 10px;
+  }
+  
+  .navbar h1 {
+    color: white;
+  }
+  
+  .citybar {
+    background-color: grey;
+    overflow: hidden;
+    align-self: center;
+    margin: auto;
+  }
+  
+  .citybar a {
+    color: whitesmoke;
+    padding: 14px 16px;
+    text-decoration: none;
+    margin: 5%;
+    text-align: center;
+  }
+  
+  .citys {}
