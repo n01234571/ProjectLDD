@@ -132,5 +132,10 @@ html {
     margin: 5%;
     text-align: center;
   }
+
+  .wrapper {
+    height: 100vh;
+    overflow: auto; 
+  }
   
   .citys {}
