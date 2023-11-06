@@ -55,6 +55,41 @@ body {
     z-index: 999;   
 }
 
+.foot {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: rgb(227, 106, 106);
+  color: white;
+  text-align: center;
+  padding: 10px 0;
+  height: 40px; /* Set the initial height to 40px */
+  transition: height 0.3s; /* Smooth transition when changing height */
+}
+
+#company {
+  position: absolute;
+  bottom: 100px; 
+  left: 100px;   
+  display: none;
+}
+
+#companyAbout {
+  position: absolute;
+  bottom: 70px; 
+  left: 100px;   
+  display: none;
+}
+
+#companyContact {
+  position: absolute;
+  bottom: 40px; 
+  left: 100px;   
+  display: none;
+}
+
+
 /* leor code */
 
 html {
@@ -62,13 +97,8 @@ html {
   width: 100%;
 }
 
-
-
-
-
-
 .navbar {
-  background-color: #e36a6a;
+  background-color: rgb(227, 106, 106);
   /* Background color */
   overflow: hidden;
   /* Clear floats */
@@ -142,5 +172,6 @@ html {
     height: 200vh;
     overflow: auto; 
   }
-  
+
+
   .citys {}

@@ -48,8 +48,7 @@
         <h1 style="color: white; position: absolute; top: -25px; left: 10px;">
             <span style="color: red;">G</span><span style="color: rgb(220, 220, 220)">reater</span>
             <span style="color: white;">T</span><span style="color: rgb(220, 220, 220)">oronto</span>
-            <span style="color: red;">A</span><span style="color: rgb(220, 220, 220)">rea</span>
-        Weather 
+            <span style="color: red;">A</span><span style="color: rgb(220, 220, 220)">rea</span>Weather 
         </h1>
     </div>
 
@@ -63,7 +62,10 @@
           <a href="#contact">About Us</a>
           <a href="#about">C/F</a>
         </div>  -->
+
+    
     <div class="navcitybar">
+
         <div class="navbar">
             <div class="logo">
               <!-- <img src="images/logo.jpg" alt="logo"> -->
@@ -82,6 +84,7 @@
               <a href="">Scarborough, Ontario</a>
             </div>
           </div>
+          
     </div>
     
         <!-- <div class="citybar">
@@ -102,7 +105,7 @@
     <h1>Weather Channel</h1>
     <div class="weather-icon">☀️</div>
     <div class="temperature">72°F</div>
-        <div class="location">Toronto ON</div>
+    <div class="location">Toronto ON</div>
 </div>
 
 <h2 class="forecast" style="color: black; position: absolute; top: 290px; left: 350px;">Canadian Forecast</h2>
@@ -148,6 +151,59 @@
 </div>
 
 </body>
+<footer class="foot" id="footer">
+    <div id="hiddenText" style="display: none;">Menu</div>
+    <div id="company" style="display: none;">Company</div>
+    <a id="companyAbout" href="test.com" style="display: none; color: white;">About Us</a>
+    <a id="companyContact" href="test.com" style="display: none; color: white;">Contact Us</a>
+
+    <p id="test">Scroll Down</p>
+</footer>
+
+<script>
+    var footer = document.getElementById("footer");
+    var hiddenText = document.getElementById("hiddenText");
+    var test = document.getElementById("test");
+    var company = document.getElementById("company");
+    var companyAbout = document.getElementById("companyAbout");
+    var companyContact = document.getElementById("companyContact");
+    var defaultFooterHeight = "40px"; // Set your default height
+    var isFooterExpanded = false;
+
+    window.addEventListener("scroll", function () {
+        var scrollHeight = window.innerHeight + window.scrollY;
+
+        if (scrollHeight >= document.body.offsetHeight) {
+            // if user scrolled the bottom
+            if (!isFooterExpanded) {
+                footer.style.height = "140px"; // make da footer bigger when hit the bottom
+                test.style.top = "10px"; // moving the test text with the transition
+                hiddenText.style.display = "block"; // show the text when hit
+                company.style.display = "block"; // show the text when hit
+                companyAbout.style.display = "block"; // show the text when hit
+                companyContact.style.display = "block"; // show the text when hit
+                test.style.display = "none";
+                isFooterExpanded = true; // boolean for if statement
+            }
+        } else {
+            // check to see if its at bottom
+            if (isFooterExpanded) {
+                footer.style.height = defaultFooterHeight; // Return to the default height
+                test.style.top = "0"; 
+                hiddenText.style.display = "none"; // hide the text
+                company.style.display = "none"; // hide the text
+                companyAbout.style.display = "none"; // hide the text
+                companyContact.style.display = "none"; // hide the text
+                test.style.display = "none";
+                isFooterExpanded = false;
+            }
+        }
+    });
+</script>
+           
+
+</footer>
+
 </html> 
 
 
