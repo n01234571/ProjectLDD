@@ -14,7 +14,7 @@
         table {
             border-collapse: collapse;
             width: 50%;
-            margin: -70px auto; /* Adjust this margin value as needed */
+            margin: -70px auto; 
         }
     
         table, th, td {
@@ -71,15 +71,39 @@
         </header>
     </div>
 
+
+    <div class="notification-container" id="notification-container">
+        <div class="notification-text">
+        This website collects cookies to deliver better user experience.
+        </div>
+        <div class="notification-buttons">
+          <button id="acceptButton">Accept</button>
+          <button id="rejectButton">Reject</button>
+        </div>
+      </div>
+
+      
+<div class="feedback-container" id="feedback-container">
+    <div class="feedback-text">
+      Do you enjoy using this website?
+    </div>
+    <div class="feedback-buttons">
+      <button id="likeBtn">Yes</button>
+      <button id="dislikeBtn">No</button>
+    </div>
+  </div>
+    
 <!-- diamond code -->
 <div class="weather-container">
-    <h1>Weather Channel</h1>
+    <h1 id = "fordust">Weather Channel</h1>
     <div class="weather-icon">☀️</div>
     <div class="temperature">72°F</div>
     <div class="location">Toronto ON</div>
 </div>
 
-<h2 class="forecast" style="color: black; position: absolute; top: 290px; left: 350px;">Canadian Forecast</h2>
+<h2 class="forecast" style="color: black; position: absolute; top: 370px; left: 545px;" id = "fordust2">Canadian Forecast</h2>
+
+<div style="height: 40px;"></div>
 
 <table>
     <tr>
@@ -120,16 +144,30 @@
    </tr>
 </table>
 </div>
+
+
+
 <script src="script.js"></script>
 </body>
 <footer class="foot" id="footer">
-    <div id="hiddenText" style="display: none;">Menu</div>
-    <div id="company" style="display: none;">Company</div>
+    <div id="hiddenText" style="display: none;"><b>Menu</b></div>
+    <div id="company" style="display: none;"><b>Company</b></div>
+    <div id ="access" style ="display: none;"><b>Accessibility</b></div>
+    <a id ="dark" style ="display: none;">Dark Mode / Light Mode</a>
+    <a id ="lang" style ="display: none;">CA/FR</a>
+    <a id ="copy" style ="display: none;">© 2023 GTA WEATHER, Inc. "LDD" and banner designs are registered trademarks of LDD, Inc. All Rights Reserved.</a>
     <a id="companyAbout" href="test.com" style="display: none; color: white;">About Us</a>
     <a id="companyContact" href="test.com" style="display: none; color: white;">Contact Us</a>
 
-    <p id="test">Scroll Down</p>
+
+    <p id="test">&#8595;</p>
+
+
+
+
 </footer>
+
+<div style="height: 500px;"></div>
 
 <script>
     var footer = document.getElementById("footer");
@@ -138,8 +176,15 @@
     var company = document.getElementById("company");
     var companyAbout = document.getElementById("companyAbout");
     var companyContact = document.getElementById("companyContact");
+    var access = document.getElementById("access");
+    var dark = document.getElementById("dark");
+    var lang = document.getElementById("lang");
+    var copy = document.getElementById("copy");
+    var ratingContainer = document.getElementById("ratingContainer");
+    var stars = document.querySelectorAll(".star");
     var defaultFooterHeight = "40px"; // Set your default height
     var isFooterExpanded = false;
+    var isDarkMode = false;
 
     window.addEventListener("scroll", function () {
         var scrollHeight = window.innerHeight + window.scrollY;
@@ -153,7 +198,11 @@
                 company.style.display = "block"; // show the text when hit
                 companyAbout.style.display = "block"; // show the text when hit
                 companyContact.style.display = "block"; // show the text when hit
+                access.style.display = "block";
+                dark.style.display = "block";
                 test.style.display = "none";
+                copy.style.display = "block";
+                lang.style.display = "block";
                 isFooterExpanded = true; // boolean for if statement
             }
         } else {
@@ -164,18 +213,161 @@
                 hiddenText.style.display = "none"; // hide the text
                 company.style.display = "none"; // hide the text
                 companyAbout.style.display = "none"; // hide the text
+                access.style.display = "none";
                 companyContact.style.display = "none"; // hide the text
-                test.style.display = "none";
+                dark.style.display = "none";
+                test.style.display = "block";
+                copy.style.display = "none";
+                lang.style.display = "none";
                 isFooterExpanded = false;
             }
         }
     });
+
+
+    var defaultWeatherContainerColor = "#f0f0f0";
+
+    function setWeatherContainerColor(color) {
+        var weatherContainer = document.querySelector(".weather-container");
+        weatherContainer.style.backgroundColor = color;
+    }
+
+    dark.addEventListener("click", function () {
+    if (isDarkMode) {
+        // switch to light mode
+        document.body.style.backgroundColor = "rgb(235, 235, 235)";
+        isDarkMode = false; 
+        dark.style.display = "block"; // dark mode  hides when clicked 
+        var tableCells = document.querySelectorAll("table td");
+        var caforecast = document.getElementById("fordust2")
+        caforecast.style.color = "black";
+        for (var i = 0; i < tableCells.length; i++) {
+            tableCells[i].style.color = "black";
+        }
+        var weatherContainer = document.querySelector(".weather-container");
+        setWeatherContainerColor(defaultWeatherContainerColor);
+
+    } else {
+        // switch to dark mode
+        document.body.style.backgroundColor = "black";
+        dark.style.display = "block"; // dark mode  hides when clicked 
+        isDarkMode = true;
+        var caforecast = document.getElementById("fordust2")
+        caforecast.style.color = "white";
+        var tableCells = document.querySelectorAll("table td");
+        for (var i = 0; i < tableCells.length; i++) {
+            tableCells[i].style.color = "white";
+        }
+        var weatherContainer = document.querySelector(".weather-container");
+        setWeatherContainerColor("lightgray");
+    }
+});
+
+    var lang = document.getElementById("lang");
+    var isFrench = false;
+
+    // arrays 
+    var cities = ["Toronto", "Mississauga", "Brampton", "Markham", "Vaughan", "Richmond Hill", "Oakville", "Burlington"];
+    var regions = ["City of Toronto", "Peel Region", "Peel Region", "York Region", "York Region", "York Region", "Halton Region", "Halton Region"];
+
+    var frenchCities = ["Toronto", "Mississauga", "Brampton", "Markham", "Vaughan", "Richmond Hill", "Oakville", "Burlington"];
+    var frenchRegions = ["Ville de Toronto", "Région de Peel", "Région de Peel", "Région de York", "Région de York", "Région de York", "Région de Halton", "Région de Halton"];
+
+    var forecastText = document.querySelector(".forecast");
+    var originalForecastText = "Canadian Forecast";
+    var frenchForecastText = "Prévision canadienne";
+
+    var titleText = document.getElementById("fordust");
+    var originalTitleText = "Weather Channel";
+    var frenchTitleText = "Chaîne Météo";
+
+    var navLinks = document.querySelectorAll(".nav-link");
+    var originalNavTexts = ["Home", "News", "About Us", "C/F"];
+    var frenchNavTexts = ["Accueil", "Nouvelles", "À propos de nous", "C/F"];
+
+    lang.addEventListener("click", function () {
+        var rows = document.querySelectorAll("table tr");
+
+        if (isFrench) {
+            // to englis
+            for (var i = 1; i < rows.length; i++) {
+                var cells = rows[i].getElementsByTagName("td");
+                cells[0].textContent = cities[i - 1];
+                cells[1].textContent = regions[i - 1];
+            }
+            forecastText.textContent = originalForecastText;
+            titleText.textContent = originalTitleText;
+            for (var i = 0; i < navLinks.length; i++) {
+                navLinks[i].textContent = originalNavTexts[i];
+            }
+            lang.textContent = "CA/FR";
+        } else {
+            // to frenc
+            for (var i = 1; i < rows.length; i++) {
+                var cells = rows[i].getElementsByTagName("td");
+                cells[0].textContent = frenchCities[i - 1];
+                cells[1].textContent = frenchRegions[i - 1];
+            }
+            forecastText.textContent = frenchForecastText;
+            titleText.textContent = frenchTitleText;
+            for (var i = 0; i < navLinks.length; i++) {
+                navLinks[i].textContent = frenchNavTexts[i];
+            }
+            lang.textContent = "FR/CA";
+        }
+
+        isFrench = !isFrench;
+    });
+
+    const notificationContainer = document.getElementById('notification-container');
+    const acceptButton = document.getElementById('acceptButton');
+    const rejectButton = document.getElementById('rejectButton');
+    acceptButton.addEventListener('click', () => {
+    notificationContainer.style.opacity = 1;
+    notificationContainer.innerHTML = 'Thank you for supporting LDD!';
+    setTimeout(() => {
+      notificationContainer.style.opacity = 0;
+      setTimeout(() => {
+        notificationContainer.style.display = 'none';
+      }, 500); 
+    }, 2000);
+    });
+    rejectButton.addEventListener('click', () => {
+        notificationContainer.style.display = 'none';
+    });
+  const feedbackContainer = document.getElementById('feedback-container');
+  const likeBtn = document.getElementById('likeBtn');
+  const dislikeBtn = document.getElementById('dislikeBtn');
+
+  function showFeedbackBox() {
+    feedbackContainer.style.display = 'block';
+  }
+  function hideFeedbackBox() {
+    feedbackContainer.style.display = 'none';
+  }
+
+  function showFeedbackAfterRandomDelay() {
+  const delay = Math.floor(Math.random() * (20000 - 10000) + 10000);
+
+    setTimeout(() => {
+      showFeedbackBox();
+    }, delay);
+  }
+
+  showFeedbackAfterRandomDelay();
+
+  likeBtn.addEventListener('click', () => {
+    hideFeedbackBox();
+  });
+
+  dislikeBtn.addEventListener('click', () => {
+    hideFeedbackBox();
+
+  });
+    
 </script>
-           
+
 
 </footer>
 
 </html> 
-
-
-
