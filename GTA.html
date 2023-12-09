@@ -57,16 +57,16 @@
                         <a href="#" class="nav-link">News</a></li>
                     <li class="nav-item">
                         <a href="#" class="nav-link">About Us</a></li>
-                    <li class="nav-item">
-                        <a href="#" class="nav-link">C/F</a></li>
-                </ul>
-          
-    </div>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" id="unitToggle">C/F</a>
+                        </li>
                 <div class="hamburger">
                     <span class="bar"></span>
                     <span class="bar"></span>
                     <span class="bar"></span>
                 </div>
+    </div>
+
             </nav>
         </header>
     </div>
@@ -92,17 +92,31 @@
       <button id="dislikeBtn">No</button>
     </div>
   </div>
-    
-<!-- diamond code -->
+
+<!-- diamonds code -->
+
 <div class="weather-container">
-    <h1 id = "fordust">Weather Channel</h1>
+    <h1 id="fordust">Weather Channel</h1>
     <div class="weather-icon">☀️</div>
-    <div class="temperature">72°F</div>
+    <div class="temperature" id="temperature">°C</div>
     <div class="location">Toronto ON</div>
+
+    <div class="dropdown">
+        <select id="cityDropdown" onchange="changeTemperature(this.value)">
+            <option value="0">Toronto</option>
+            <option value="3">Mississauga</option>
+            <option value="5">Brampton</option>
+            <option value="10">Markham</option>
+            <option value="16">Vaughan</option>
+            <option value="19">Richmond Hill</option>
+            <option value="45">Oakville</option>
+            <option value="33">Burlington</option>
+        </select>
+    </div>
 </div>
 
-<h2 class="forecast" style="color: black; position: absolute; top: 370px; left: 545px;" id = "fordust2">Canadian Forecast</h2>
 
+<h2 class="forecast" style="color: black;">Canadian Forecast</h2>
 <div style="height: 40px;"></div>
 
 <table>
@@ -144,18 +158,18 @@
    </tr>
 </table>
 </div>
-
-
-
-<script src="script.js"></script>
 </body>
+
+<!-- dustins code -->
 <footer class="foot" id="footer">
     <div id="hiddenText" style="display: none;"><b>Menu</b></div>
     <div id="company" style="display: none;"><b>Company</b></div>
+    <div id="info" style="display: none;"><b>Info</b></div>
     <div id ="access" style ="display: none;"><b>Accessibility</b></div>
     <a id ="dark" style ="display: none;">Dark Mode / Light Mode</a>
     <a id ="lang" style ="display: none;">CA/FR</a>
     <a id ="copy" style ="display: none;">© 2023 GTA WEATHER, Inc. "LDD" and banner designs are registered trademarks of LDD, Inc. All Rights Reserved.</a>
+
     <a id="companyAbout" href="test.com" style="display: none; color: white;">About Us</a>
     <a id="companyContact" href="test.com" style="display: none; color: white;">Contact Us</a>
 
@@ -167,24 +181,128 @@
 
 </footer>
 
+
+
 <div style="height: 500px;"></div>
 
 <script>
+    // dustins code gonna comment next to each thing
+
+        // getting the element with the id "footer"
     var footer = document.getElementById("footer");
+
+    // gettting the element with the id "hiddenText"
     var hiddenText = document.getElementById("hiddenText");
+
+    // getting the element with the id "test"
     var test = document.getElementById("test");
+
+    // getting the element with the id "company"
     var company = document.getElementById("company");
+
+    // getting the element with the id "companyAbout"
     var companyAbout = document.getElementById("companyAbout");
+
+    // getting the element with the id "companyContact"
     var companyContact = document.getElementById("companyContact");
+
+    // getting the element with the id "access"
     var access = document.getElementById("access");
+
+    // getting the element with the id "dark"
     var dark = document.getElementById("dark");
+
+    // getting the element with the id "lang"
     var lang = document.getElementById("lang");
+
+    // getting the element with the id "info"
+    var copy = document.getElementById("info");
+
+    // getting the element with the id "copy"
     var copy = document.getElementById("copy");
+
+    // getting the element with the id "ratingContainer"
     var ratingContainer = document.getElementById("ratingContainer");
-    var stars = document.querySelectorAll(".star");
-    var defaultFooterHeight = "40px"; // Set your default height
+
+    // set the default color for diamonds weather container
+    var defaultWeatherContainerColor = "#f0f0f0";
+
+    // getting the element with the id "lang"
+    var lang = document.getElementById("lang");
+
+    // settign the default height for the footer as 40px
+    var defaultFooterHeight = "40px";
+
+    // boolean to check if footer has been expanded
     var isFooterExpanded = false;
+
+    // boolean to check if language has been changed to french
+    var isFrench = false;
+
+    // boolean to check if theme has been changed to dark mode
     var isDarkMode = false;
+
+    // array for cities in the GTA ( for translation use )
+    var cities = ["Toronto", "Mississauga", "Brampton", "Markham", "Vaughan", "Richmond Hill", "Oakville", "Burlington"];
+
+    // array for translation for regions in the GTA (for translation use)
+    var regions = ["City of Toronto", "Peel Region", "Peel Region", "York Region", "York Region", "York Region", "Halton Region", "Halton Region"];
+
+    // array for cities in the GTA ( translated )
+    var frenchCities = ["Toronto", "Mississauga", "Brampton", "Markham", "Vaughan", "Richmond Hill", "Oakville", "Burlington"];
+
+    // array for regions in the GTA ( translated )
+    var frenchRegions = ["Ville de Toronto", "Région de Peel", "Région de Peel", "Région de York", "Région de York", "Région de York", "Région de Halton", "Région de Halton"];
+
+    // getting the element with the class "forecast"
+    var forecastText = document.querySelector(".forecast");
+
+    // original forecast text to be translated
+    var originalForecastText = "Canadian Forecast";
+
+    // translated forecast text
+    var frenchForecastText = "Prévision canadienne";
+
+    // getting the element with the id "fordust"
+    var titleText = document.getElementById("fordust");
+
+    // original text inside weather container
+    var originalTitleText = "Weather Channel";
+
+    // translated text inside weather container
+    var frenchTitleText = "Chaîne Météo";
+
+    // getting all the elements with teh class nav-link
+    var navLinks = document.querySelectorAll(".nav-link");
+
+    // Define original navigation texts
+    var originalNavTexts = ["Home", "News", "About Us", "C/F"];
+
+    // Define French navigation texts
+    var frenchNavTexts = ["Accueil", "Nouvelles", "À propos de nous", "C/F"];
+
+    // Get the element with the id "notification-container"
+    const notificationContainer = document.getElementById('notification-container');
+
+    // Get the element with the id "acceptButton"
+    const acceptButton = document.getElementById('acceptButton');
+
+    // Get the element with the id "rejectButton"
+    const rejectButton = document.getElementById('rejectButton');
+
+    // Get the element with the id "feedback-container"
+    const feedbackContainer = document.getElementById('feedback-container');
+
+    // Get the element with the id "likeBtn"
+    const likeBtn = document.getElementById('likeBtn');
+
+    // Get the element with the id "dislikeBtn"
+    const dislikeBtn = document.getElementById('dislikeBtn');
+
+    // Generate a random delay between 100,000 and 200,000 milliseconds
+    const delay = Math.floor(Math.random() * (200000 - 100000) + 100000);
+
+
 
     window.addEventListener("scroll", function () {
         var scrollHeight = window.innerHeight + window.scrollY;
@@ -192,8 +310,14 @@
         if (scrollHeight >= document.body.offsetHeight) {
             // if user scrolled the bottom
             if (!isFooterExpanded) {
-                footer.style.height = "140px"; // make da footer bigger when hit the bottom
-                test.style.top = "10px"; // moving the test text with the transition
+            // Delayed display for each element
+            setTimeout(function () {
+                expandFooter(); // make da footer bigger when hit the bottom
+            }, 0); // 0 milliseconds delay // 200 milliseconds delay
+
+            setTimeout(function () {
+                
+                test.style.top = "10px";
                 hiddenText.style.display = "block"; // show the text when hit
                 company.style.display = "block"; // show the text when hit
                 companyAbout.style.display = "block"; // show the text when hit
@@ -201,10 +325,13 @@
                 access.style.display = "block";
                 dark.style.display = "block";
                 test.style.display = "none";
+                info.style.display = "block";
                 copy.style.display = "block";
                 lang.style.display = "block";
-                isFooterExpanded = true; // boolean for if statement
-            }
+            }, 200); 
+            isFooterExpanded = true; // boolean for if statement
+        }
+        
         } else {
             // check to see if its at bottom
             if (isFooterExpanded) {
@@ -216,6 +343,7 @@
                 access.style.display = "none";
                 companyContact.style.display = "none"; // hide the text
                 dark.style.display = "none";
+                info.style.display = "none";
                 test.style.display = "block";
                 copy.style.display = "none";
                 lang.style.display = "none";
@@ -224,8 +352,23 @@
         }
     });
 
+    function expandFooter() {
+        var targetHeight = 135;
+        var currentHeight = parseInt(window.getComputedStyle(footer).height);
 
-    var defaultWeatherContainerColor = "#f0f0f0";
+        function animate() {
+            currentHeight += 40; // You can adjust the speed of expansion here
+            footer.style.height = currentHeight + "px";
+
+        if (currentHeight < targetHeight) {
+            requestAnimationFrame(animate);
+        } else {
+            isFooterExpanded = true;
+        }
+    }
+
+    animate();
+    }
 
     function setWeatherContainerColor(color) {
         var weatherContainer = document.querySelector(".weather-container");
@@ -263,28 +406,6 @@
     }
 });
 
-    var lang = document.getElementById("lang");
-    var isFrench = false;
-
-    // arrays 
-    var cities = ["Toronto", "Mississauga", "Brampton", "Markham", "Vaughan", "Richmond Hill", "Oakville", "Burlington"];
-    var regions = ["City of Toronto", "Peel Region", "Peel Region", "York Region", "York Region", "York Region", "Halton Region", "Halton Region"];
-
-    var frenchCities = ["Toronto", "Mississauga", "Brampton", "Markham", "Vaughan", "Richmond Hill", "Oakville", "Burlington"];
-    var frenchRegions = ["Ville de Toronto", "Région de Peel", "Région de Peel", "Région de York", "Région de York", "Région de York", "Région de Halton", "Région de Halton"];
-
-    var forecastText = document.querySelector(".forecast");
-    var originalForecastText = "Canadian Forecast";
-    var frenchForecastText = "Prévision canadienne";
-
-    var titleText = document.getElementById("fordust");
-    var originalTitleText = "Weather Channel";
-    var frenchTitleText = "Chaîne Météo";
-
-    var navLinks = document.querySelectorAll(".nav-link");
-    var originalNavTexts = ["Home", "News", "About Us", "C/F"];
-    var frenchNavTexts = ["Accueil", "Nouvelles", "À propos de nous", "C/F"];
-
     lang.addEventListener("click", function () {
         var rows = document.querySelectorAll("table tr");
 
@@ -319,9 +440,6 @@
         isFrench = !isFrench;
     });
 
-    const notificationContainer = document.getElementById('notification-container');
-    const acceptButton = document.getElementById('acceptButton');
-    const rejectButton = document.getElementById('rejectButton');
     acceptButton.addEventListener('click', () => {
     notificationContainer.style.opacity = 1;
     notificationContainer.innerHTML = 'Thank you for supporting LDD!';
@@ -335,39 +453,34 @@
     rejectButton.addEventListener('click', () => {
         notificationContainer.style.display = 'none';
     });
-  const feedbackContainer = document.getElementById('feedback-container');
-  const likeBtn = document.getElementById('likeBtn');
-  const dislikeBtn = document.getElementById('dislikeBtn');
 
-  function showFeedbackBox() {
+
+    function showFeedbackBox() {
     feedbackContainer.style.display = 'block';
   }
-  function hideFeedbackBox() {
+    function hideFeedbackBox() {
     feedbackContainer.style.display = 'none';
   }
 
-  function showFeedbackAfterRandomDelay() {
-  const delay = Math.floor(Math.random() * (20000 - 10000) + 10000);
-
-    setTimeout(() => {
-      showFeedbackBox();
-    }, delay);
+    function showFeedbackAfterRandomDelay() {
+        setTimeout(() => {
+            showFeedbackBox();
+        }, delay);
   }
 
-  showFeedbackAfterRandomDelay();
+    showFeedbackAfterRandomDelay();
 
-  likeBtn.addEventListener('click', () => {
+    likeBtn.addEventListener('click', () => {
     hideFeedbackBox();
   });
 
-  dislikeBtn.addEventListener('click', () => {
+    dislikeBtn.addEventListener('click', () => {
     hideFeedbackBox();
 
   });
     
 </script>
 
-
+<script src="script.js"></script>
 </footer>
-
 </html> 
