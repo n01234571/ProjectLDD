@@ -138,6 +138,15 @@
     background-color: #f2f2f2;
     border-bottom: 1px solid #ccc;
   }
+
+
+  .weather-container1 {
+    text-align: center;
+    padding: 20px;
+    background-color: #f2f2f2;
+    border-bottom: 1px solid #ccc;
+  }
+  
   
   .weather-icon {
     font-size: 3em;
@@ -195,55 +204,14 @@
     width: 100%;
   }
   
-
-  /* Reset default margin and padding */
-html, body {
-  margin: 0;
-  padding: 0;
-}
-
-/* Style for header/navigation */
-header {
-  background-color: #333;
-  color: #fff;
-  padding: 15px;
-}
-
-.navbar {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-}
-
-.navbar li {
-  display: inline;
-  margin-right: 10px;
-}
-
-.navbar a {
-  color: #fff;
-  text-decoration: none;
-}
-
-.navbar a:hover {
-  color: #c0a126; /* Change the color on hover */
-}
-
-/* Style for traffic container */
-.traffic-container {
-  width: 80%;
-  margin: 20px auto;
-}
-
-
-
+  
   /* dustins code */
   .foot {
     position: fixed;
     bottom: 0;
     left: 0;
     width: 100%;
-    background-color: rgb(227, 106, 106);
+    background-color: rgb(87, 87, 87);
     color: white;
     text-align: center;
     padding: 10px 0;
