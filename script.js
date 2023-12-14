@@ -89,7 +89,7 @@ function changeTemperature(selectedCity) {
 }
 
 
-// Function to generate random temperature (0-45) - Replace this with your logic
+// Function to generate random temperature (0-45) 
 function generateRandomTemperature() {
 return Math.floor(Math.random() * 46); // Generates a random whole number between 0 and 45
 }
