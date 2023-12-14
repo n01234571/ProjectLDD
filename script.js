@@ -27,7 +27,7 @@ function onCityNameClick(cityName) {
     }
 }
 
-// Adds event listeners to city names in the table
+// Add event listeners to city names in the table
 var city1 = document.getElementById('city1');
 city1.addEventListener('click', function() {
     onCityNameClick('Toronto');
@@ -68,6 +68,7 @@ city8.addEventListener('click', function() {
     onCityNameClick('Burlington');
 });
 
+
 // Function to handle temperature change when city is selected
 function changeTemperature(selectedCity) {
     var temperature = generateRandomTemperature();
@@ -88,7 +89,7 @@ function changeTemperature(selectedCity) {
 }
 
 
-// Function to generate random temperature (0-45) 
+// Function to generate random temperature (0-45) - Replace this with your logic
 function generateRandomTemperature() {
 return Math.floor(Math.random() * 46); // Generates a random whole number between 0 and 45
 }
@@ -159,5 +160,6 @@ celsiusLink.addEventListener('click', toggleTemperatureUnit);
 // Function to convert Celsius to Fahrenheit
 function celsiusToFahrenheit(celsius) {
 return Math.round((celsius * 9 / 5) + 32);
-}und((celsius * 9 / 5) + 32);
 }
+
+
