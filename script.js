@@ -13,6 +13,61 @@ navMenu.classList.remove("active");
 }))
 
 // Diamonds code
+// Function to handle city name click event
+function onCityNameClick(cityName) {
+    var cityDropdown = document.getElementById('cityDropdown');
+
+    // Find the corresponding city in the dropdown and select it
+    for (var i = 0; i < cityDropdown.options.length; i++) {
+        if (cityDropdown.options[i].text === cityName) {
+            cityDropdown.selectedIndex = i;
+            changeTemperature(cityDropdown.value); // Trigger the temperature change function
+            break;
+        }
+    }
+}
+
+// Adds event listeners to city names in the table
+var city1 = document.getElementById('city1');
+city1.addEventListener('click', function() {
+    onCityNameClick('Toronto');
+});
+
+var city2 = document.getElementById('city2');
+city2.addEventListener('click', function() {
+    onCityNameClick('Mississauga');
+});
+
+var city3 = document.getElementById('city3');
+city3.addEventListener('click', function() {
+    onCityNameClick('Brampton');
+});
+
+var city4 = document.getElementById('city4');
+city4.addEventListener('click', function() {
+    onCityNameClick('Markham');
+});
+
+var city5 = document.getElementById('city5');
+city5.addEventListener('click', function() {
+    onCityNameClick('Vaughan');
+});
+
+var city6 = document.getElementById('city6');
+city6.addEventListener('click', function() {
+    onCityNameClick('Richmond Hill');
+});
+
+var city7 = document.getElementById('city7');
+city7.addEventListener('click', function() {
+    onCityNameClick('Oakville');
+});
+
+var city8 = document.getElementById('city8');
+city8.addEventListener('click', function() {
+    onCityNameClick('Burlington');
+});
+
 // Function to handle temperature change when city is selected
 function changeTemperature(selectedCity) {
     var temperature = generateRandomTemperature();
