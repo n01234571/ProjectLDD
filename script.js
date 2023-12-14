@@ -15,16 +15,23 @@ navMenu.classList.remove("active");
 // Diamonds code
 // Function to handle temperature change when city is selected
 function changeTemperature(selectedCity) {
-var temperature = generateRandomTemperature();
-var temperatureDisplay = document.getElementById('temperature');
+    var temperature = generateRandomTemperature();
+    var temperatureDisplay = document.getElementById('temperature');
+    var cityDropdown = document.getElementById('cityDropdown');
+    var selectedCityName = cityDropdown.options[cityDropdown.selectedIndex].text; // Get the selected city name
 
-// Limit the temperature to two digits without decimal places
-temperatureDisplay.textContent = temperature.toLocaleString('en-US', {
-    minimumIntegerDigits: 1,
-    useGrouping: false
-}) + '°C';
-updateWeatherConditions(temperature);
+    // Display the selected city name in the weather container
+    var locationDisplay = document.querySelector('.location');
+    locationDisplay.textContent = selectedCityName;
+
+    // Limit the temperature to two digits without decimal places
+    temperatureDisplay.textContent = temperature.toLocaleString('en-US', {
+        minimumIntegerDigits: 1,
+        useGrouping: false
+    }) + '°C';
+    updateWeatherConditions(temperature);
 }
+
 
 // Function to generate random temperature (0-45) - Replace this with your logic
 function generateRandomTemperature() {
@@ -97,4 +104,5 @@ celsiusLink.addEventListener('click', toggleTemperatureUnit);
 // Function to convert Celsius to Fahrenheit
 function celsiusToFahrenheit(celsius) {
 return Math.round((celsius * 9 / 5) + 32);
+}und((celsius * 9 / 5) + 32);
 }
