@@ -222,7 +222,7 @@
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
     display: flex;
   }
-  /* this */
+  /* this is for weather icon*/
   .weather-icon {
     font-size: 64px;
   }
@@ -240,7 +240,17 @@
     width: 100%;
   }
   
-  
+/* for changing cursor to pointer on hover */
+#city1,
+#city2,
+#city3,
+#city4,
+#city5,
+#city6,
+#city7,
+#city8 {
+    cursor: pointer;
+}
   /* dustins code */
   .foot {
     position: fixed;
